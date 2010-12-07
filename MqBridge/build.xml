@@ -88,6 +88,13 @@
 		<copy file="${project_home}/QueueToFile.bat" todir="${tmp_dir}/${project_name}-${project_version}" />
 		<copy file="${project_home}/FileToQueue.sh" todir="${tmp_dir}/${project_name}-${project_version}" />
 		<copy file="${project_home}/QueueToFile.sh" todir="${tmp_dir}/${project_name}-${project_version}" />
+
+		<copy todir="${tmp_dir}/${project_name}-${project_version}/res">
+			<fileset dir="${res_dir}">
+				<exclude name="**/CVS" />
+				<exclude name="**/.svn" />
+			</fileset>
+		</copy>
 		
 		<copy file="${jar_file}" todir="${tmp_dir}/${project_name}-${project_version}/bin" />
 
