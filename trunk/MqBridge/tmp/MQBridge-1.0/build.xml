@@ -88,6 +88,13 @@
 		<copy file="${project_home}/QueueToFile.bat" todir="${tmp_dir}/${project_name}-${project_version}" />
 		<copy file="${project_home}/FileToQueue.sh" todir="${tmp_dir}/${project_name}-${project_version}" />
 		<copy file="${project_home}/QueueToFile.sh" todir="${tmp_dir}/${project_name}-${project_version}" />
+
+		<copy todir="${tmp_dir}/${project_name}-${project_version}/res">
+			<fileset dir="${res_dir}">
+				<exclude name="**/CVS" />
+				<exclude name="**/.svn" />
+			</fileset>
+		</copy>
 		
 		<copy file="${jar_file}" todir="${tmp_dir}/${project_name}-${project_version}/bin" />
 
@@ -171,7 +178,7 @@
 			<arg line="${gpg_password}|gpg --batch --passphrase-fd 0 -u 5C79EE7A -b -a -s ${file}" />
 		</exec>
 		<exec executable="cmd.exe" os="Windows XP" vmlauncher="false" spawn="false">
-			<arg line="/c gpg_sign.bat marcoratto@gmail.com ${gpg_password} ${file}" />
+			<arg line="/c gpg_sign.bat 5C79EE7A ${gpg_password} ${file}" />
 		</exec>
 	</target>
 
